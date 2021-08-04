@@ -13,10 +13,17 @@
 .file-input{
   width: 100%;
 }
-.submit{
+.submit-btn{
+  max-width: fit-content;
   margin: auto;
 }
+
+
 input{
   width: 50%;
   margin: 20px;
 }
+.row{
+  align-items: center;
+}
+

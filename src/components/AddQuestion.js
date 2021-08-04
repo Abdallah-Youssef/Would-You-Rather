@@ -1,6 +1,6 @@
 import React from 'react'
 
-const AddPoll = () => {
+const AddQuestion = () => {
     return (
         <div>
             Add Poll
@@ -8,4 +8,4 @@ const AddPoll = () => {
     )
 }
 
-export default AddPoll
+export default AddQuestion

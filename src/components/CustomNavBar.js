@@ -2,9 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { Avatar } from './Avatar';
 
-const CustomNavBar = ({ user }) => {
-
+const CustomNavBar = ({user}) => {
+    console.log("User: ", user);
     return (
         <div className="custom-navbar">
             <Navbar  expand="sm">
@@ -18,23 +19,10 @@ const CustomNavBar = ({ user }) => {
                             <Nav.Link as={Link} to="/signin" >Account</Nav.Link>
                         </Nav>
 
-                        
-                        {
-                            user && 
-                            <div className="user-info">
+    
+                            
+                        <Avatar avatarURL={user.avatarURL} style={{marginRight: "auto"}}/>
 
-                               {user.name}
-                                <img
-                                className="image"
-                                src={user.avatarURL}
-                                alt="User avatar"
-            
-                            />
-                            </div>
-                            
-                        }
-                            
-                    
                     </Navbar.Collapse>
                 </Container>
             </Navbar>

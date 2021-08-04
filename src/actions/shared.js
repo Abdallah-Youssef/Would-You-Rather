@@ -21,11 +21,11 @@ export function handleInitialData() {
 }
 
 
-export function handleSignIn({name, avatarURL}){
-    return (dispatch, getState) => {
-        dispatch(userLogIn({name, avatarURL}))
-        dispatch(setAuthedUser(name))
-        
-        //setUsers(getState().users)
-    }
-}
+// export function handleSignIn({name, avatarURL}, history){
+    
+//         //dispatch(userLogIn({name, avatarURL}))
+//         //dispatch(setAuthedUser(name))
+//         //history.push('/')
+//         //setUsers(getState().users)
+    
+// }

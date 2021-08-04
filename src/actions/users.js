@@ -12,6 +12,7 @@ export function initialUsers(users){
 export function userLogIn({name, avatarURL}){
     return {
         type: LOG_IN,
-        name, avatarURL
+        name,
+        avatarURL
     }
 }
