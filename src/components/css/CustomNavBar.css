@@ -1,0 +1,11 @@
+.user-info{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.user-info-name{
+    font-weight: 700;
+    color: blue;
+    white-space: nowrap;
+    margin: auto
+}

@@ -3,6 +3,8 @@ import {
     LOG_IN
 } from '../actions/users'
 
+
+
 function userReducer (state={}, action){
     switch (action.type) {
         case LOG_IN:
@@ -22,7 +24,7 @@ function newUser(action){
     return {
         name:action.name,
         avatarURL: action.avatarURL ? action.avatarURL : "./avatar.png",
-        id: action.name.replace(' ', '').toLowerCase(),
+        id: action.id,
         answers: {},
         questions: []
     }
@@ -37,7 +39,7 @@ export default function users(state={},action){
         case LOG_IN:
             return {
                 ...state, 
-                [action.name]: state[action.name] ? userReducer(state[action.name], action) : newUser(action)
+                [action.id]: state[action.id] ? userReducer(state[action.id], action) : newUser(action)
             }
     
         default:

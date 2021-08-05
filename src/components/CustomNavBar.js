@@ -3,12 +3,13 @@ import { connect } from 'react-redux'
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { Avatar } from './Avatar';
+import './css/CustomNavBar.css'
 
-const CustomNavBar = ({user}) => {
+const CustomNavBar = ({ user }) => {
     console.log("User: ", user);
     return (
         <div className="custom-navbar">
-            <Navbar  expand="sm">
+            <Navbar expand="sm">
                 <Container>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
@@ -19,9 +20,12 @@ const CustomNavBar = ({user}) => {
                             <Nav.Link as={Link} to="/signin" >Account</Nav.Link>
                         </Nav>
 
-    
-                            
-                        <Avatar avatarURL={user.avatarURL} style={{marginRight: "auto"}}/>
+
+                        <div className="user-info">
+                            <span className="user-info-name">{user.name}</span>
+                            <Avatar avatarURL={user.avatarURL} style={{ marginRight: "auto" }} />
+
+                        </div>
 
                     </Navbar.Collapse>
                 </Container>
