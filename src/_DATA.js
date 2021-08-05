@@ -129,6 +129,7 @@ export function _setUsers(newUsers){
   return new Promise((res, rej) => {
     setTimeout(() => {
       users = newUsers
+      console.log("New USers:" , users);
       res()
     }, 1000)
   })

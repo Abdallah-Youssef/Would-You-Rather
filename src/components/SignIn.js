@@ -3,15 +3,17 @@ import { connect } from 'react-redux'
 import './css/SignIn.css'
 import { userLogIn } from '../actions/users'
 import {setAuthedUser} from '../actions/authedUser'
+import {handleSignIn} from '../actions/shared.js'
 import { Form, Col, Row, Button } from 'react-bootstrap'
-import { useHistory } from 'react-router-dom'
 import { Avatar } from './Avatar'
 
 
 const SignIn = ({ dispatch }) => {
-    const [name, setName] = useState("")
+    // TODO remove default value
+    const [name, setName] = useState("Hello World")
+
+
     const [avatarURL, setAvatarURL] = useState()
-    let history = useHistory()
 
     const handleImageSelect = (e) => {
         
@@ -22,10 +24,10 @@ const SignIn = ({ dispatch }) => {
     }
     const handleEnter = (e) => {
         //e.preventDefault()
-        //dispatch(handleSignIn({ name, avatarURL: imageSrc }, history))
+        dispatch(handleSignIn({ name, avatarURL }))
         console.log(avatarURL);
-        dispatch(userLogIn({name, avatarURL}))
-        dispatch(setAuthedUser(name))
+        // dispatch(userLogIn({name, avatarURL}))
+        // dispatch(setAuthedUser(name))
         //history.push('/')
     }
 
@@ -42,7 +44,7 @@ const SignIn = ({ dispatch }) => {
                             User Name
                         </Form.Label>
                         <Col >
-                            <Form.Control onChange={(e) => setName(e.target.value)} type="text" placeholder="Enter your name" />
+                            <Form.Control value={name} onChange={(e) => setName(e.target.value)} type="text" placeholder="Enter your name" />
                         </Col>
                     </Form.Group>
 

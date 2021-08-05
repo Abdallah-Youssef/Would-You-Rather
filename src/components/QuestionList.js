@@ -1,12 +1,11 @@
 import React from 'react'
 
-export const QuestionList = ({questions}) => {
+const QuestionList = ({questions}) => {
     return (
         <div>
-            {
-            questions.map(q => (
-                <div className={option}>{q.optionOne.text}</div>
-            ))}
+            Question {questions}
         </div>
     )
 }
+
+export default QuestionList

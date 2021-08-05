@@ -1,4 +1,4 @@
-import { getData } from "../API";
+import { getData, setUsers } from "../API";
 import {showLoading, hideLoading} from 'react-redux-loading'
 import { initialUsers, userLogIn } from "./users";
 import { initialQuestions} from './questions'
@@ -21,11 +21,19 @@ export function handleInitialData() {
 }
 
 
-// export function handleSignIn({name, avatarURL}, history){
+export function handleSignIn({name, avatarURL}){
+    return (dispatch, getState) => {
+        // Optimistic update
+        dispatch(userLogIn({name, avatarURL}))
+        dispatch(setAuthedUser(name))
+
+        // setUsers is always successfull
+        setUsers(getState().users)
+
+    }
+        //dispatch(userLogIn({name, avatarURL}))
+        //dispatch(setAuthedUser(name))
+        //history.push('/')
+        //setUsers(getState().users)
     
-//         //dispatch(userLogIn({name, avatarURL}))
-//         //dispatch(setAuthedUser(name))
-//         //history.push('/')
-//         //setUsers(getState().users)
-    
-// }
+}
