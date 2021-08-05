@@ -10,7 +10,7 @@ import { Avatar } from './Avatar'
 
 const SignIn = ({ dispatch }) => {
     // TODO remove default value
-    const [name, setName] = useState("Hello World")
+    const [name, setName] = useState("John Doe")
 
 
     const [avatarURL, setAvatarURL] = useState()
@@ -25,7 +25,7 @@ const SignIn = ({ dispatch }) => {
     const handleEnter = (e) => {
         //e.preventDefault()
         dispatch(handleSignIn({ name, avatarURL }))
-        console.log(avatarURL);
+        // console.log(avatarURL);
         // dispatch(userLogIn({name, avatarURL}))
         // dispatch(setAuthedUser(name))
         //history.push('/')

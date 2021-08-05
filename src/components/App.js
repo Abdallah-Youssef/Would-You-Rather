@@ -11,23 +11,23 @@ import LeaderBoard from './LeaderBoard'
 import SignIn from './SignIn';
 import authedUser from '../reducers/authedUser';
 
-const App = ({ user, dispatch }) => {
+const App = ({ loadingBar, user, dispatch }) => {
   useEffect(() => {
     dispatch(handleInitialData())
     console.log();
   }, [])
 
 
-
+  console.log(loadingBar);
 
 
   return (
     <div>
+      <LoadingBar />
 
       {
-        (user === null) ? <SignIn /> :
+        (!loadingBar.default) && ((user === null) ? <SignIn /> :
           <React.Fragment>
-            <LoadingBar />
 
 
             <CustomNavBar user={user} />
@@ -52,6 +52,7 @@ const App = ({ user, dispatch }) => {
 
             </Switch>
           </React.Fragment>
+        )
       }
 
     </div>
@@ -62,7 +63,8 @@ const App = ({ user, dispatch }) => {
 
 function mapStateToProps(state) {
   return {
-    user: state.authedUser ? state.users[authedUser] : null
+    user: state.authedUser ? state.users[authedUser] : null,
+    loadingBar: state.loadingBar
   }
 }
 export default connect(mapStateToProps)(App)

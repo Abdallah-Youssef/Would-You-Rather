@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Question = () => {
+const Question = ({question}) => {
     return (
         <div>
             "Avatar" Would You rather
-            <button>A</button>
-            <button>B</button>
+            <button>{question.optionOne.text}</button>
+            <button>{question.optionTwo.text}</button>
         </div>
     )
 }

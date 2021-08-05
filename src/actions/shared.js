@@ -31,9 +31,4 @@ export function handleSignIn({name, avatarURL}){
         setUsers(getState().users)
 
     }
-        //dispatch(userLogIn({name, avatarURL}))
-        //dispatch(setAuthedUser(name))
-        //history.push('/')
-        //setUsers(getState().users)
-    
 }
