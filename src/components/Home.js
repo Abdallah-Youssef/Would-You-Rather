@@ -1,5 +1,5 @@
 import React from 'react'
-import { Tabs, Tab } from 'react-bootstrap'
+import { Tabs, Tab } from 'react-bootstrap-tabs';
 import { connect } from 'react-redux'
 import './css/Home.css'
 import QuestionList from './QuestionList'
@@ -7,7 +7,10 @@ const Home = ({ newQuestions, answeredQuestions }) => {
     //console.log(newQuestions);
     return (
         <div>
-
+            <Tabs onSelect={(i, label) => console.log(label + ' selected')}>
+                <Tab label="New Questions"><QuestionList questions={newQuestions} /></Tab>
+                <Tab label="Answered Questions"><QuestionList questions={answeredQuestions} /></Tab>
+            </Tabs>
             {/* <Tabs defaultActiveKey="new" className="mb-3">
                 <Tab eventKey="new" title="New Question">
                     <QuestionList questions={newQuestions} />
@@ -16,9 +19,7 @@ const Home = ({ newQuestions, answeredQuestions }) => {
                     <QuestionList questions={answeredQuestions} />
                 </Tab>
             </Tabs> */}
-                    <QuestionList questions={newQuestions} />
 
-<QuestionList questions={answeredQuestions} />
 
 
         </div>

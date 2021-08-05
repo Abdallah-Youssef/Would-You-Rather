@@ -1,6 +1,6 @@
 import React from 'react'
-import Question from './Question';
-
+import { Link } from 'react-router-dom';
+import './css/QuestionList.css'
 // Presentational Component
 const QuestionList = ({questions}) => {
 
@@ -8,7 +8,15 @@ const QuestionList = ({questions}) => {
     return (
         <div>
             {
-                questions.map(q => (<Question key={q.id} question={q}/>))
+                questions.map(q => (
+                    <div key={q.id} className="question-info">
+                        <span className="question-info-option">{q.optionOne.text}</span>
+                        <span>OR</span>
+                        <span className="question-info-option">{q.optionTwo.text}</span>
+                        <Link className="question-info-link" to={`/question/${q.id}`}> View Question </Link>
+                    </div>
+                    
+                ))
             }
             
         </div>

@@ -6,12 +6,14 @@ import {setAuthedUser} from '../actions/authedUser'
 import {handleSignIn} from '../actions/shared.js'
 import { Form, Col, Row, Button } from 'react-bootstrap'
 import { Avatar } from './Avatar'
+import { useHistory } from 'react-router-dom'
+
 
 
 const SignIn = ({ dispatch }) => {
     // TODO remove default value
     const [name, setName] = useState("John Doe")
-
+    let history = useHistory()
 
     const [avatarURL, setAvatarURL] = useState()
 
@@ -24,7 +26,7 @@ const SignIn = ({ dispatch }) => {
     }
     const handleEnter = (e) => {
         //e.preventDefault()
-        dispatch(handleSignIn({ name, avatarURL }))
+        dispatch(handleSignIn({ name, avatarURL }, history))
         // console.log(avatarURL);
         // dispatch(userLogIn({name, avatarURL}))
         // dispatch(setAuthedUser(name))
