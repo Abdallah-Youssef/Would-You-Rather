@@ -8,7 +8,7 @@ const QuestionList = ({questions}) => {
     return (
         <div>
             {
-                questions.map(q => (
+                questions.sort((a,b)=> b.timestamp -a.timestamp ).map(q => (
                     <div key={q.id} className="question-info">
                         <span className="question-info-option">{q.optionOne.text}</span>
                         <span>OR</span>

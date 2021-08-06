@@ -3,8 +3,10 @@ import {connect} from 'react-redux'
 import Avatar from './Avatar'
 import './css/LeaderBoard.css'
 
-const score = (user) => (Object.values(user.answers).length + user.questions.length)
 
+const answered = (user) => (Object.values(user.answers).length)
+const aksed = (user) => user.questions.length
+const score = (user) => answered(user) + aksed(user)
 const LeaderBoard = ({users}) => {
     return (
         <div className="leaderboard">
@@ -15,7 +17,7 @@ const LeaderBoard = ({users}) => {
 
                     <div className="leaderboard-user-img"><Avatar  avatarURL={u.avatarURL}/></div>
                     <h1 className="leaderboard-user-name">{u.name}</h1>
-                    <h3 className="score"> Score: {score(u)}</h3>
+                    <h5 className="score"> Answered: {answered(u)}, Asked: {aksed(u)}, Score: {score(u)} </h5>
                 </div>
                 
             ))

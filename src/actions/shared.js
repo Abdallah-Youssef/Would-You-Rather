@@ -28,6 +28,7 @@ function addQuestion(formattedQuestion){
     }
 }
 
+// Shared between users and questions states
 export function handleInitialData() {
     return (dispatch) => {
         dispatch(showLoading())
@@ -40,6 +41,7 @@ export function handleInitialData() {
     }
 }
 
+// Shared between users and authedUser states
 export function handleSignIn({ name, avatarURL }, history) {
     return (dispatch, getState) => {
         dispatch(userLogIn({ name, avatarURL }))
@@ -47,7 +49,7 @@ export function handleSignIn({ name, avatarURL }, history) {
 
         dispatch(showLoading())
         setUsers(getState().users).then(() => {
-            history.push('/')
+            //history.push('/')
             dispatch(hideLoading())
         }
         )
@@ -55,6 +57,7 @@ export function handleSignIn({ name, avatarURL }, history) {
     }
 }
 
+// Shared between users and questions states
 export function handleSubmitQuestion({ question, option }) {
     return (dispatch, getState) => {
 
@@ -72,7 +75,8 @@ export function handleSubmitQuestion({ question, option }) {
     }
 }
 
-export function handleAddQuestion(optionOne, optionTwo){
+// Shared between users and questions states
+export function handleAddQuestion(optionOne, optionTwo, history){
     return (dispatch, getState) => {
         const authedUser = getState().authedUser
 
@@ -82,8 +86,8 @@ export function handleAddQuestion(optionOne, optionTwo){
         .then(formattedQuestion => {
             console.log(formattedQuestion);
             dispatch(addQuestion(formattedQuestion))
-
             dispatch(hideLoading())
+            history.push('/')
         }) 
     }
 }

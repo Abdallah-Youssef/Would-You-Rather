@@ -1,11 +1,13 @@
 import React, {useState} from 'react'
 import { Form, Col, Row, Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import {handleAddQuestion} from '../actions/shared'
 
 const AddQuestion = ({dispatch}) => {
     const [optionOne, setOptionOne] = useState("")
     const [optionTwo, setOptionTwo] = useState("")
+    let history = useHistory()
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -15,7 +17,7 @@ const AddQuestion = ({dispatch}) => {
         }
 
 
-        dispatch(handleAddQuestion(optionOne, optionTwo))
+        dispatch(handleAddQuestion(optionOne, optionTwo, history))
     }
 
     return (
