@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { Avatar } from './Avatar';
+import  Avatar  from './Avatar';
 import './css/CustomNavBar.css'
 
 const CustomNavBar = ({ user }) => {

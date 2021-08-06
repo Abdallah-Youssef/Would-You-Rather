@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import './css/SignIn.css'
 import {handleSignIn} from '../actions/shared.js'
 import { Form, Col, Row, Button } from 'react-bootstrap'
-import { Avatar } from './Avatar'
+import  Avatar  from './Avatar'
 import { useHistory } from 'react-router-dom'
 
 

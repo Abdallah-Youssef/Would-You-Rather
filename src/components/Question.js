@@ -10,9 +10,6 @@ import Results from './Results'
 const Question = ({ author, question, answered, dispatch, user }) => {
     const [usersAnswer, setUsersAnswer] = useState("")
     useEffect(() => {
-        console.log("User ::" , user);
-        if (!user)
-            alert("YSTAAAA")
         const option = user.answers[question.id]
         if (option)
             setUsersAnswer(question[option].text)
@@ -63,12 +60,10 @@ const Question = ({ author, question, answered, dispatch, user }) => {
 }
 
 function mapStateToProps(state, props) {
-    //console.log("Props :::::::::::::", props);
     let { questionID } = props.match.params
     let question = state.questions[questionID]
 
     let user = state.users[state.authedUser]
-    //console.log("USER SSSSS", user);
     let answered = user.answers[questionID] ? true : false
 
     return {

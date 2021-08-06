@@ -1,14 +1,11 @@
 import React from 'react'
-import './css/Avatar.css'
-export const Avatar = ({avatarURL}) => {
-    return (
-        <div className="image-cropper">
-                                                    <img
-                            className="avatar"
-                            src={avatarURL}
-                            alt="User avatar"
+import {Image} from 'react-bootstrap'
+const Avatar = ({avatarURL}) => {
 
-                        />
-                        </div>
+    return (
+        <Image style={{width:"100px", height:"100px", border:"1px solid blue"}} src={avatarURL} roundedCircle fluid />
     )
+
 }
+
+export default Avatar

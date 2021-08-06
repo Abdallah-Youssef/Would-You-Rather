@@ -1,0 +1,19 @@
+.leaderboard-user{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    border: 2px solid rgba(0, 0, 0, 0.452);
+    margin: 2em;
+    padding: 1em;
+}
+
+
+.score{
+    margin-left: auto;
+    margin-right: 2em;
+}
+
+.leaderboard-user-name, .leaderboard-user-img{
+    margin: 0 2em;
+}
