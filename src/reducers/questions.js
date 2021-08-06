@@ -1,4 +1,4 @@
-import { INITIAL_DATA, SUBMIT_ANSWER } from '../actions/shared'
+import { INITIAL_DATA, SUBMIT_ANSWER, ADD_QUESTION } from '../actions/shared'
 
 // {
 //     "id": "am8ehyc8byjqgar0jgpub9",
@@ -37,6 +37,7 @@ function question(state = {}, action) {
                 [action.option]: option(state[action.option], action)
             }
 
+
         default: return state
     }
 }
@@ -53,6 +54,12 @@ export default function questions(state = {}, action) {
             return {
                 ...state,
                 [action.questionID]: question(state[action.questionID], action)
+            }
+
+        case ADD_QUESTION:
+            return {
+                ...state,
+                [action.question.id] : action.question
             }
         default:
             return state

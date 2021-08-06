@@ -16,6 +16,7 @@
 
 .question-option{
 
+    min-width: 200px;
     height: 100px;
     margin: 2em;
 }

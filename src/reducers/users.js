@@ -2,9 +2,23 @@ import {
     LOG_IN, 
 } from '../actions/users'
 
-import {INITIAL_DATA, SUBMIT_ANSWER} from '../actions/shared'
+import {INITIAL_DATA, SUBMIT_ANSWER, ADD_QUESTION} from '../actions/shared'
 
 
+// {
+//     "id": "johndoe",
+//     "name": "John Doe",
+//     "avatarURL": "./john_doe.png",
+//     "answers": {
+//         "xj352vofupe1dqz9emx13r": "optionOne",
+//         "vthrdm985a262al8qx3do": "optionTwo",
+//         "6ni6ok3ym7mf1p33lnez": "optionTwo"
+//     },
+//     "questions": [
+//         "6ni6ok3ym7mf1p33lnez",
+//         "xj352vofupe1dqz9emx13r"
+//     ]
+// }
 
 function userReducer (state={}, action){
     switch (action.type) {
@@ -17,13 +31,15 @@ function userReducer (state={}, action){
             }
 
         case SUBMIT_ANSWER:
-            // console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n\n\n\n\n\n\n\n\n");
-            // console.log(state.answers);
-            // console.log(action.questionID);
-            // console.log([...(state.answers), action.questionID]);
             return {
                 ...state,
                 answers: {...(state.answers), [action.questionID]: action.option}
+            }
+
+        case ADD_QUESTION:
+            return {
+                ...state,
+                questions: [...state.questions, action.question.id]
             }
     
         default:
@@ -58,6 +74,12 @@ export default function users(state={},action){
             return {
                 ...state,
                 [action.userID]: userReducer(state[action.userID], action)
+            }
+
+        case ADD_QUESTION:
+            return {
+                ...state, 
+                [action.question.author] : userReducer(state[action.question.author], action)
             }
     
         default:

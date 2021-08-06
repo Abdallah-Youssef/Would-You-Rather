@@ -10,7 +10,7 @@ const LeaderBoard = ({users}) => {
         <div className="leaderboard">
             {
             users.map(u => (
-                <div className="leaderboard-user">
+                <div key={u.id} className="leaderboard-user">
                    
 
                     <div className="leaderboard-user-img"><Avatar  avatarURL={u.avatarURL}/></div>

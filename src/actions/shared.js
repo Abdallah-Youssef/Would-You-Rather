@@ -1,23 +1,30 @@
-import { getData, setUsers, saveQuestionAnswer } from "../API";
+import { getData, setUsers, saveQuestionAnswer, saveQuestion } from "../API";
 import { showLoading, hideLoading } from 'react-redux-loading'
 import { userLogIn } from "./users";
 import { setAuthedUser } from './authedUser'
 
 export const SUBMIT_ANSWER = "SUBMIT_ANSWER"
 export const INITIAL_DATA = "INITIAL_DATA"
+export const ADD_QUESTION = "ADD_QUESTION"
 
-
-export function initalData({ questions, users }) {
+function initalData({ questions, users }) {
     return {
         type: INITIAL_DATA,
         questions, users
     }
 }
 
-export function submitAnswer({ questionID, userID, option }) {
+function submitAnswer({ questionID, userID, option }) {
     return {
         type: SUBMIT_ANSWER,
         questionID, userID, option
+    }
+}
+
+function addQuestion(formattedQuestion){
+    return {
+        type: ADD_QUESTION,
+        question: formattedQuestion
     }
 }
 
@@ -62,5 +69,21 @@ export function handleSubmitQuestion({ question, option }) {
                 "Data in _DATA.js: ", users, questions
             ))
 
+    }
+}
+
+export function handleAddQuestion(optionOne, optionTwo){
+    return (dispatch, getState) => {
+        const authedUser = getState().authedUser
+
+        dispatch(showLoading())
+
+        saveQuestion(optionOne, optionTwo, authedUser)
+        .then(formattedQuestion => {
+            console.log(formattedQuestion);
+            dispatch(addQuestion(formattedQuestion))
+
+            dispatch(hideLoading())
+        }) 
     }
 }
