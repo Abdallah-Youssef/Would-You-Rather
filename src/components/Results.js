@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Button } from 'react-bootstrap'
+import { Card } from 'react-bootstrap'
 
 function questionStatistics(question) {
     const countOne = question.optionOne.votes.length

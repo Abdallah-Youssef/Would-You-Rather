@@ -1,9 +1,8 @@
 import {
-    INITIAL_USERS,
     LOG_IN, 
 } from '../actions/users'
 
-import {SUBMIT_ANSWER} from '../actions/shared'
+import {INITIAL_DATA, SUBMIT_ANSWER} from '../actions/shared'
 
 
 
@@ -44,7 +43,7 @@ function newUser(action){
 
 export default function users(state={},action){
     switch (action.type) {
-        case INITIAL_USERS:
+        case INITIAL_DATA:
             return action.users
 
         

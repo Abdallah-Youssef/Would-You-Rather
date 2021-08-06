@@ -1,5 +1,4 @@
-import { INITIAL_QUESTIONS } from '../actions/questions'
-import { SUBMIT_ANSWER } from '../actions/shared'
+import { INITIAL_DATA, SUBMIT_ANSWER } from '../actions/shared'
 
 // {
 //     "id": "am8ehyc8byjqgar0jgpub9",
@@ -28,9 +27,6 @@ function option(state = {}, action) {
     }
 }
 
-
-
-
 function question(state = {}, action) {
     // console.log("State =", state);
     // console.log(state[action.option]);
@@ -50,7 +46,7 @@ export default function questions(state = {}, action) {
     // console.log("State : ", state);
     //console.log(state[action.questionID]);
     switch (action.type) {
-        case INITIAL_QUESTIONS:
+        case INITIAL_DATA:
             return action.questions
 
         case SUBMIT_ANSWER:
