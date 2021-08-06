@@ -1,0 +1,12 @@
+li:hover{
+    cursor: pointer;
+}
+
+.home{
+    width: 90%;
+    margin: auto;
+    border-right: 1px solid rgba(0, 0, 0, 0.164);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.164);
+    padding: 2px;
+} 
+

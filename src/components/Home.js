@@ -6,22 +6,16 @@ import QuestionList from './QuestionList'
 const Home = ({ newQuestions, answeredQuestions }) => {
     //console.log(newQuestions);
     return (
-        <div>
+        <div className="home">
             <Tabs onSelect={(i, label) => console.log(label + ' selected')}>
-                <Tab label="New Questions"><QuestionList questions={newQuestions} /></Tab>
-                <Tab label="Answered Questions"><QuestionList questions={answeredQuestions} /></Tab>
+                <Tab label="New Questions">
+                    <QuestionList className="questions" questions={newQuestions} />
+                </Tab>
+                
+                <Tab label="Answered Questions">
+                    <QuestionList className="questions" questions={answeredQuestions} />
+                </Tab>
             </Tabs>
-            {/* <Tabs defaultActiveKey="new" className="mb-3">
-                <Tab eventKey="new" title="New Question">
-                    <QuestionList questions={newQuestions} />
-                </Tab>
-                <Tab eventKey="answered" title="Answered Questions">
-                    <QuestionList questions={answeredQuestions} />
-                </Tab>
-            </Tabs> */}
-
-
-
         </div>
     )
 }
