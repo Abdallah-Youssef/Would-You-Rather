@@ -1,0 +1,21 @@
+.question {
+    width: 75%;
+    margin: auto;
+}
+
+
+
+.question-options{
+
+    
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.question-option{
+
+    height: 100px;
+    margin-top: 2em;
+}

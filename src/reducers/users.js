@@ -1,7 +1,9 @@
 import {
     INITIAL_USERS,
-    LOG_IN
+    LOG_IN, 
 } from '../actions/users'
+
+import {SUBMIT_ANSWER} from '../actions/shared'
 
 
 
@@ -13,6 +15,16 @@ function userReducer (state={}, action){
             return {
                 ...state,
                 avatarURL: action.avatarURL
+            }
+
+        case SUBMIT_ANSWER:
+            // console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n\n\n\n\n\n\n\n\n");
+            // console.log(state.answers);
+            // console.log(action.questionID);
+            // console.log([...(state.answers), action.questionID]);
+            return {
+                ...state,
+                answers: {...(state.answers), [action.questionID]: action.option}
             }
     
         default:
@@ -40,6 +52,13 @@ export default function users(state={},action){
             return {
                 ...state, 
                 [action.id]: state[action.id] ? userReducer(state[action.id], action) : newUser(action)
+            }
+        
+        
+        case SUBMIT_ANSWER: 
+            return {
+                ...state,
+                [action.userID]: userReducer(state[action.userID], action)
             }
     
         default:

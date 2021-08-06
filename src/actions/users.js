@@ -1,3 +1,6 @@
+import {SUBMIT_ANSWER} from './shared'
+
+
 export const INITIAL_USERS = "INITIAL_USERS"
 export const LOG_IN = "LOG_IN"
 
@@ -20,3 +23,4 @@ export function userLogIn({name, avatarURL}){
         id: name_to_id(name)
     }
 }
+

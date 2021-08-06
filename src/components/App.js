@@ -10,6 +10,7 @@ import AddQuestion from './AddQuestion';
 import LeaderBoard from './LeaderBoard'
 import SignIn from './SignIn';
 import authedUser from '../reducers/authedUser';
+import Question from './Question';
 
 const App = ({ loadingBar, user, dispatch }) => {
   useEffect(() => {
@@ -18,7 +19,6 @@ const App = ({ loadingBar, user, dispatch }) => {
   }, [])
 
 
-  console.log(loadingBar);
 
 
   return (
@@ -50,6 +50,8 @@ const App = ({ loadingBar, user, dispatch }) => {
                 <SignIn />
               </Route>
 
+              <Route path="/question/:questionID" component={Question}/>
+          
             </Switch>
           </React.Fragment>
         )

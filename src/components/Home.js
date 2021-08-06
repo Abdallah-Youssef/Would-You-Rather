@@ -11,7 +11,7 @@ const Home = ({ newQuestions, answeredQuestions }) => {
                 <Tab label="New Questions">
                     <QuestionList className="questions" questions={newQuestions} />
                 </Tab>
-                
+
                 <Tab label="Answered Questions">
                     <QuestionList className="questions" questions={answeredQuestions} />
                 </Tab>
@@ -49,8 +49,8 @@ function mapStateToProps(state) {
     // console.log(answeredQuestions);
     // console.log(newQuestions);
     answeredQuestions = Object.keys(answeredQuestions).map(q => state.questions[q])
-    console.log(answeredQuestions);
-    console.log(newQuestions);
+    // console.log(answeredQuestions);
+    // console.log(newQuestions);
     return {
         newQuestions,
         answeredQuestions

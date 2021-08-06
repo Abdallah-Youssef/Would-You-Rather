@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import './css/SignIn.css'
-import { userLogIn } from '../actions/users'
-import {setAuthedUser} from '../actions/authedUser'
 import {handleSignIn} from '../actions/shared.js'
 import { Form, Col, Row, Button } from 'react-bootstrap'
 import { Avatar } from './Avatar'
