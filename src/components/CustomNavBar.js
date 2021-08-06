@@ -2,10 +2,15 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import  Avatar  from './Avatar';
+import Avatar from './Avatar';
 import './css/CustomNavBar.css'
+import { logOut } from '../actions/authedUser';
 
-const CustomNavBar = ({ user }) => {
+const CustomNavBar = ({ user, dispatch }) => {
+    const logOutClick = (e) => {
+        dispatch(logOut())
+    }
+
     // console.log("User: ", user);
     return (
         <div className="custom-navbar">
@@ -17,7 +22,13 @@ const CustomNavBar = ({ user }) => {
                             <Nav.Link as={Link} to="/" >Home</Nav.Link>
                             <Nav.Link as={Link} to="/leaderboard" >Leader Board</Nav.Link>
                             <Nav.Link as={Link} to="/add" >Add a Question</Nav.Link>
-                            <Nav.Link as={Link} to="/signin" >Account</Nav.Link>
+
+                            <Nav.Link as={Link} to="/signin" 
+                            onClick={logOutClick}
+                            style={{fontWeight:"900", border:"3px solid black", borderRadius:"30%"}}
+                            >
+                                Log Out
+                            </Nav.Link>
                         </Nav>
 
 
