@@ -5,7 +5,6 @@ import './css/Question.css'
 import { handleSubmitQuestion } from '../actions/shared';
 import Results from './Results'
 import Avatar from './Avatar'
-import { withRouter } from 'react-router-dom';
 
 
 const Question = ({ author, question, answered, dispatch, user }) => {
