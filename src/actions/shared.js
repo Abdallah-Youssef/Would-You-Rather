@@ -1,11 +1,16 @@
-import { getData, setUsers } from "../API";
+import { getData, setUsers, saveQuestionAnswer } from "../API";
 import { showLoading, hideLoading } from 'react-redux-loading'
-import { initialUsers, userLogIn, userSubmitAnswer } from "./users";
-import { initialQuestions, questionSubmitAnswer } from './questions'
+import { initialUsers, userLogIn } from "./users";
+import { initialQuestions } from './questions'
 import { setAuthedUser } from './authedUser'
 
 export const SUBMIT_ANSWER = "SUBMIT_ANSWER"
-
+export function submitAnswer({questionID, userID, option}){
+    return {
+        type: SUBMIT_ANSWER,
+        questionID, userID, option
+    }
+}
 
 export function handleInitialData() {
     return (dispatch) => {
@@ -23,14 +28,11 @@ export function handleInitialData() {
     }
 }
 
-
 export function handleSignIn({ name, avatarURL }, history) {
     return (dispatch, getState) => {
-        // Optimistic update
         dispatch(userLogIn({ name, avatarURL }))
         dispatch(setAuthedUser(name))
 
-        // setUsers is always successfull
         dispatch(showLoading())
         setUsers(getState().users).then(() => {
             history.push('/')
@@ -41,19 +43,19 @@ export function handleSignIn({ name, avatarURL }, history) {
     }
 }
 
-export function submitAnswer({questionID, userID, option}){
-    return {
-        type: SUBMIT_ANSWER,
-        questionID, userID, option
-    }
-}
-
 export function handleSubmitQuestion ({question, option}){
     return (dispatch, getState) => {
 
         let userID = getState().authedUser
+        // Optimistic update
         dispatch(submitAnswer({userID, questionID: question.id, option}))
 
+        setUsers(getState().users)
+        .then(() => saveQuestionAnswer(userID, question.id, option))
+        .then(() => getData())
+        .then (([users, questions]) => console.log(
+            "Data in _DATA.js: ", users, questions
+        ))
         
     }
 }

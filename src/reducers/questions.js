@@ -32,8 +32,8 @@ function option(state = {}, action) {
 
 
 function question(state = {}, action) {
-    console.log("State =", state);
-    console.log(state[action.option]);
+    // console.log("State =", state);
+    // console.log(state[action.option]);
     switch (action.type) {
         case SUBMIT_ANSWER:
             return {
@@ -47,7 +47,7 @@ function question(state = {}, action) {
 
 
 export default function questions(state = {}, action) {
-    console.log("State : ", state);
+    // console.log("State : ", state);
     //console.log(state[action.questionID]);
     switch (action.type) {
         case INITIAL_QUESTIONS:

@@ -17,5 +17,11 @@
 .question-option{
 
     height: 100px;
-    margin-top: 2em;
+    margin: 2em;
+}
+
+.statistics{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }

@@ -6,7 +6,7 @@ import { Avatar } from './Avatar';
 import './css/CustomNavBar.css'
 
 const CustomNavBar = ({ user }) => {
-    console.log("User: ", user);
+    // console.log("User: ", user);
     return (
         <div className="custom-navbar">
             <Navbar expand="sm">

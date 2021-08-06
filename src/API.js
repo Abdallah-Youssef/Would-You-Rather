@@ -2,7 +2,11 @@ import { _getQuestions, _getUsers, _setUsers, _saveQuestionAnswer } from "./_DAT
 
 export function getUsers() {return _getUsers()}
 export function setUsers(users) {return _setUsers(users)}
-export function saveQuestionAnswer(questionInfo){return _saveQuestionAnswer(questionInfo)}
+
+
+export function saveQuestionAnswer(authedUser, qid, answer ){
+    return _saveQuestionAnswer({ authedUser, qid, answer })
+}
 
 export function getData(){
     return Promise.all([_getUsers(), _getQuestions()])
