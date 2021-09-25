@@ -1,0 +1,44 @@
+[
+    {
+        "id": "sarahedo",
+        "name": "Sarah Edo",
+        "avatarURL": "/avatar.png",
+        "answers": {
+            "614f12090c52df1f9c6cbdc0": "optionOne",
+            "614f12090c52df1f9c6cbdc1": "optionTwo",
+            "614f12090c52df1f9c6cbdc2": "optionTwo",
+            "614f12090c52df1f9c6cbdc3": "optionTwo"
+        },
+        "questions": [
+            "614f12090c52df1f9c6cbdc0",
+            "614f12090c52df1f9c6cbdc2"
+        ]
+    },
+    {
+        "id": "tylermcginnis",
+        "name": "Tyler McGinnis",
+        "avatarURL": "/avatar.png",
+        "answers": {
+            "614f12090c52df1f9c6cbdc4": "optionOne",
+            "614f12090c52df1f9c6cbdc5": "optionTwo"
+        },
+        "questions": [
+            "614f12090c52df1f9c6cbdc3",
+            "614f12090c52df1f9c6cbdc4"
+        ]
+    },
+    {
+        "id": "johndoe",
+        "name": "John Doe",
+        "avatarURL": "/avatar.png",
+        "answers": {
+            "614f12090c52df1f9c6cbdc5": "optionOne",
+            "614f12090c52df1f9c6cbdc4": "optionTwo",
+            "614f12090c52df1f9c6cbdc1": "optionTwo"
+        },
+        "questions": [
+            "614f12090c52df1f9c6cbdc1",
+            "614f12090c52df1f9c6cbdc5"
+        ]
+    }
+]

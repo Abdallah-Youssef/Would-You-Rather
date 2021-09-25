@@ -25,7 +25,6 @@ const CustomNavBar = ({ user, dispatch }) => {
 
                             <Nav.Link as={Link} to="/signin" 
                             onClick={logOutClick}
-                            style={{fontWeight:"900", border:"3px solid black", borderRadius:"30%"}}
                             >
                                 Log Out
                             </Nav.Link>

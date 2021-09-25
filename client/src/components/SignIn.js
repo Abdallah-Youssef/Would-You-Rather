@@ -9,33 +9,24 @@ import { useHistory } from 'react-router-dom'
 
 
 const SignIn = ({ dispatch }) => {
-    // TODO remove default value
     const [name, setName] = useState("John Doe")
     let history = useHistory()
 
     const [avatarURL, setAvatarURL] = useState()
 
     const handleImageSelect = (e) => {
-        
         setAvatarURL(URL.createObjectURL(e.target.files[0]))
-        // console.log(" File :: " , URL.createObjectURL(e.target.files[0]));
-        // console.log(imageSrc);
-
     }
     const handleEnter = (e) => {
-        //e.preventDefault()
+        e.preventDefault()
         dispatch(handleSignIn({ name, avatarURL }, history))
-        // console.log(avatarURL);
-        // dispatch(userLogIn({name, avatarURL}))
-        // dispatch(setAuthedUser(name))
-        //history.push('/')
     }
 
     return (
         <div className="login-container">
 
 
-            <Form>
+            <Form onSubmit={handleEnter}>
                 <fieldset>
                     <legend className="mb-3">Sign In</legend>
 
@@ -57,7 +48,6 @@ const SignIn = ({ dispatch }) => {
                             {
                                 avatarURL &&
                                 <Avatar avatarURL={avatarURL} />
-
                             }
                         </Col>
                     </Form.Group>
