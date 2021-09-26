@@ -1,3 +1,8 @@
+import axios from 'axios'
+const api = axios.create({
+  baseURL: 'http://localhost:3001/api/v1/'
+});
+
 let users = {
   sarahedo: {
     id: 'sarahedo',
@@ -120,25 +125,50 @@ function generateUID() {
 }
 
 export function _getUsers() {
-  return new Promise((res, rej) => {
-    setTimeout(() => res({ ...users }), 1000)
+  console.log(users);
+  return api.get("users")
+  .then(res => res.data)
+  .then(users => {
+    let newUsers = {}
+    users.forEach(u => {
+      if (!u.answers) u.answers = {}
+      newUsers[u.id] = u
+    })
+    console.log(newUsers);
+    return newUsers
   })
+  // .then(u => console.log(u))
+
+  // return new Promise((res, rej) => {
+  //   setTimeout(() => res({ ...users }), 1000)
+  // })
 }
 
-export function _setUsers(newUsers){
+export function _setUsers(newUsers) {
   return new Promise((res, rej) => {
     setTimeout(() => {
       users = newUsers
-      //console.log("New USers:" , users);
       res()
     }, 1000)
   })
 }
 
+export function _updateUser(user){
+  return api.post("users", user)
+}
+
 export function _getQuestions() {
-  return new Promise((res, rej) => {
-    setTimeout(() => res({ ...questions }), 1000)
-  })
+  console.log(questions);
+  return api.get("questions")
+    .then(res => res.data)
+    .then(qs => {
+      let newQuestions = {}
+      qs.forEach(q => {
+        q.id = q["_id"]
+        newQuestions[q._id] = q
+      })
+      return newQuestions
+    })
 }
 
 function formatQuestion({ optionOneText, optionTwoText, author }) {
@@ -158,27 +188,32 @@ function formatQuestion({ optionOneText, optionTwoText, author }) {
 }
 
 export function _saveQuestion(question) {
-  return new Promise((res, rej) => {
-    const authedUser = question.author;
-    const formattedQuestion = formatQuestion(question);
+  return api.post("/questions", question)
+  .then(r => r.data)
+  .then(q => ({...q, id: q._id}))
 
-    setTimeout(() => {
-      questions = {
-        ...questions,
-        [formattedQuestion.id]: formattedQuestion
-      }
+  // return new Promise((res, rej) => {
+  //   const authedUser = question.author;
+  //   const formattedQuestion = formatQuestion(question);
 
-      users = {
-        ...users,
-        [authedUser]: {
-          ...users[authedUser],
-          questions: users[authedUser].questions.concat([formattedQuestion.id])
-        }
-      }
+  //   setTimeout(() => {
+  //     questions = {
+  //       ...questions,
+  //       [formattedQuestion.id]: formattedQuestion
+  //     }
 
-      res(formattedQuestion)
-    }, 1000)
-  })
+  
+  //     users = {
+  //       ...users,
+  //       [authedUser]: {
+  //         ...users[authedUser],
+  //         questions: users[authedUser].questions.concat([formattedQuestion.id])
+  //       }
+  //     }
+
+  //     res(formattedQuestion)
+  //   }, 1000)
+  // })
 }
 
 export function _saveQuestionAnswer({ authedUser, qid, answer }) {

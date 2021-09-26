@@ -1,7 +1,8 @@
-import { getData, setUsers, saveQuestionAnswer, saveQuestion } from "../API";
+import { getData, setUsers, updateUser, saveQuestionAnswer, saveQuestion } from "../API";
 import { showLoading, hideLoading } from 'react-redux-loading'
-import { userLogIn } from "./users";
+import { name_to_id, userLogIn } from "./users";
 import { setAuthedUser } from './authedUser'
+
 
 export const SUBMIT_ANSWER = "SUBMIT_ANSWER"
 export const INITIAL_DATA = "INITIAL_DATA"
@@ -21,7 +22,7 @@ function submitAnswer({ questionID, userID, option }) {
     }
 }
 
-function addQuestion(formattedQuestion){
+function addQuestion(formattedQuestion) {
     return {
         type: ADD_QUESTION,
         question: formattedQuestion
@@ -48,11 +49,13 @@ export function handleSignIn({ name, avatarURL }, history) {
         dispatch(setAuthedUser(name))
 
         dispatch(showLoading())
-        setUsers(getState().users).then(() => {
-            //history.push('/')
+
+        console.log(getState().users[name_to_id(name)]);
+        updateUser(getState().users[name_to_id(name)])
+        .then(() => {
+            history.push("/")
             dispatch(hideLoading())
-        }
-        )
+        })
 
     }
 }
@@ -62,6 +65,7 @@ export function handleSubmitQuestion({ question, option }) {
     return (dispatch, getState) => {
 
         let userID = getState().authedUser
+        console.log(option);
         // Optimistic update
         dispatch(submitAnswer({ userID, questionID: question.id, option }))
 
@@ -76,18 +80,18 @@ export function handleSubmitQuestion({ question, option }) {
 }
 
 // Shared between users and questions states
-export function handleAddQuestion(optionOne, optionTwo, history){
+export function handleAddQuestion(optionOne, optionTwo, history) {
     return (dispatch, getState) => {
         const authedUser = getState().authedUser
 
         dispatch(showLoading())
 
         saveQuestion(optionOne, optionTwo, authedUser)
-        .then(formattedQuestion => {
-            console.log(formattedQuestion);
-            dispatch(addQuestion(formattedQuestion))
-            dispatch(hideLoading())
-            history.push('/')
-        }) 
+            .then(formattedQuestion => {
+                console.log(formattedQuestion);
+                dispatch(addQuestion(formattedQuestion))
+                dispatch(hideLoading())
+                history.push('/')
+            })
     }
 }

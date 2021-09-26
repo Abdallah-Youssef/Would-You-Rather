@@ -41,6 +41,8 @@ function mapStateToProps(state) {
     let questions = Object.values(state.questions)
     let answeredQuestions = authedUser.answers
 
+    console.log(state);
+
     // Filtering the questions
     let newQuestions = questions.filter(q => !answeredQuestions[q.id])
 

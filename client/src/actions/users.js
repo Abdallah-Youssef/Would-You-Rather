@@ -1,7 +1,7 @@
 export const LOG_IN = "LOG_IN"
 
-function name_to_id(name){
-    return name.replace(' ', '').toLowerCase()
+export function name_to_id(name){
+    return name.split(" ").join("").toLowerCase()
 }
 
 
