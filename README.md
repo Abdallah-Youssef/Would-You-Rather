@@ -8,7 +8,7 @@ This is a web app of the popular game "would you rather". Some of the features:
 ## Install Instructions
 
 In the project directory run:
-### `npm instal`
+### `npm install`
 ### `npm start`
 
 Runs the app in the development mode.\
